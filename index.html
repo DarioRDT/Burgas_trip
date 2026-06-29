@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>בורגס 2026 - חופשה משפחתית</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Rubik for Hebrew) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Rubik', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll bar during swipe */
         }
         /* Custom scrollbar for light mode */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
             background: #f1f5f9;
@@ -29,390 +28,386 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col selection:bg-teal-200 selection:text-slate-900">
 
-    <!-- FIXED / STICKY TOP HEADER AREA -->
-    <div class="sticky top-0 z-50 bg-slate-50/95 backdrop-blur-md border-b border-slate-200 shadow-xs max-w-xl w-full mx-auto px-5 pt-3 pb-2">
-        <div class="flex items-center justify-between gap-4">
-            <!-- Compact Title -->
-            <h1 class="text-2xl font-black tracking-tight text-slate-900">
-                בורגס, בולגריה
+    <div class="sticky top-0 z-50 bg-slate-50/95 backdrop-blur-md border-b border-slate-200 shadow-xs max-w-xl w-full mx-auto px-4 pt-2.5 pb-2">
+        <div class="flex items-center justify-between gap-2">
+            <h1 class="text-xl font-black tracking-tight text-slate-900">
+                בורגס, בולגריה 2026
             </h1>
             
-            <!-- Compact Countdown Timer -->
-            <div id="countdown" class="flex gap-1.5 text-center bg-white border border-slate-200 rounded-xl p-1.5 shadow-2xs">
-                <div class="bg-slate-50 rounded-lg px-2 py-0.5 min-w-[40px]">
-                    <span id="days" class="block text-sm font-bold text-teal-600">00</span>
-                    <span class="text-[9px] text-slate-400 block font-medium">ימים</span>
+            <div id="countdown" class="flex gap-1 text-center bg-white border border-slate-200 rounded-xl p-1 shadow-2xs">
+                <div class="bg-slate-50 rounded-lg px-2 py-0.5 min-w-[36px]">
+                    <span id="days" class="block text-xs font-bold text-teal-600">00</span>
+                    <span class="text-[8px] text-slate-400 block font-medium">ימים</span>
                 </div>
-                <div class="bg-slate-50 rounded-lg px-2 py-0.5 min-w-[40px]">
-                    <span id="hours" class="block text-sm font-bold text-teal-600">00</span>
-                    <span class="text-[9px] text-slate-400 block font-medium">שעות</span>
+                <div class="bg-slate-50 rounded-lg px-2 py-0.5 min-w-[36px]">
+                    <span id="hours" class="block text-xs font-bold text-teal-600">00</span>
+                    <span class="text-[8px] text-slate-400 block font-medium">שעות</span>
                 </div>
-                <div class="bg-slate-50 rounded-lg px-2 py-0.5 min-w-[40px]">
-                    <span id="minutes" class="block text-sm font-bold text-teal-600">00</span>
-                    <span class="text-[9px] text-slate-400 block font-medium">דקות</span>
+                <div class="bg-slate-50 rounded-lg px-2 py-0.5 min-w-[36px]">
+                    <span id="minutes" class="block text-xs font-bold text-teal-600">00</span>
+                    <span class="text-[8px] text-slate-400 block font-medium">דקות</span>
                 </div>
             </div>
         </div>
 
-        <!-- Navigation Tabs (Fixed setup) -->
-        <div class="flex justify-center space-x-1 space-x-reverse bg-white p-1 rounded-xl border border-slate-200 shadow-2xs mt-3">
-            <button onclick="switchTab('timeline')" id="tab-timeline" class="flex-1 py-2 px-1 rounded-lg text-sm font-bold transition-all bg-teal-600 text-white shadow-xs">
+        <div class="flex justify-center space-x-1 space-x-reverse bg-white p-1 rounded-xl border border-slate-200 shadow-2xs mt-2">
+            <button onclick="switchTab('timeline')" id="tab-timeline" class="flex-1 py-1.5 px-1 rounded-lg text-xs md:text-sm font-bold transition-all bg-teal-600 text-white shadow-xs">
                 📅 לו"ז
             </button>
-            <button onclick="switchTab('checklist')" id="tab-checklist" class="flex-1 py-2 px-1 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-800">
+            <button onclick="switchTab('checklist')" id="tab-checklist" class="flex-1 py-1.5 px-1 rounded-lg text-xs md:text-sm font-bold transition-all text-slate-500 hover:text-slate-800">
                 🧳 לארוז
             </button>
-            <button onclick="switchTab('places')" id="tab-places" class="flex-1 py-2 px-1 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-800">
+            <button onclick="switchTab('places')" id="tab-places" class="flex-1 py-1.5 px-1 rounded-lg text-xs md:text-sm font-bold transition-all text-slate-500 hover:text-slate-800">
                 ⭐ מקומות
             </button>
-            <button onclick="switchTab('tools')" id="tab-tools" class="flex-1 py-2 px-1 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-800">
+            <button onclick="switchTab('tools')" id="tab-tools" class="flex-1 py-1.5 px-1 rounded-lg text-xs md:text-sm font-bold transition-all text-slate-500 hover:text-slate-800">
                 🪙 כסף
             </button>
         </div>
     </div>
 
-    <!-- MAIN SCROLLABLE CONTENT AREA -->
-    <main class="flex-grow max-w-xl w-full mx-auto px-5 py-6 space-y-8">
+    <main id="swipe-container" class="flex-grow max-w-xl w-full mx-auto px-4 py-4 space-y-6">
 
-        <!-- ================= TAB: TIMELINE ================= -->
-        <section id="content-timeline" class="space-y-6">
-            <!-- Timeline Container -->
-            <div class="relative border-r-2 border-slate-200 mr-4 space-y-8 pr-6">
+        <section id="content-timeline" class="space-y-4">
+            <div class="relative border-r-2 border-slate-200 mr-2 space-y-6 pr-5">
 
-                <!-- Event: Train Departure (Tuesday) -->
                 <div class="relative">
-                    <span class="absolute -right-[31px] top-2 bg-white border-4 border-teal-600 rounded-full w-5 h-5"></span>
-                    
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <span class="text-xs font-bold text-teal-700 block mb-1">יום שלישי | 4 באוגוסט | 13:00 (משוער)</span>
-                        <h3 class="text-xl font-bold text-slate-900">🚆 רכבת מכרמיאל לנתב"ג</h3>
-                        <p class="text-base text-slate-600 mt-1.5 leading-relaxed">יוצאים מתחנת כרמיאל לכיוון נמל התעופה. זמן נסיעה משוער הוא כשעתיים כולל החלפה במידת הצורך.</p>
-                        <div class="mt-3.5">
-                            <a href="https://www.rail.co.il/" target="_blank" class="inline-flex items-center gap-1.5 text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 px-4 rounded-xl border border-slate-200 transition-all">
+                    <span class="absolute -right-[27px] top-1.5 bg-white border-4 border-teal-600 rounded-full w-4 h-4"></span>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                        <span class="text-xs font-bold text-teal-700 block mb-0.5">יום שלישי | 4 באוגוסט | 13:00 (משוער)</span>
+                        <h3 class="text-lg font-bold text-slate-900">🚆 רכבת מכרמיאל לנתב"ג</h3>
+                        <p class="text-sm md:text-base text-slate-600 mt-1 leading-relaxed">יוצאים מתחנת כרמיאל לכיוון נמל התעופה. זמן נסיעה משוער הוא כשעתיים כולל החלפה במידת הצורך.</p>
+                        <div class="mt-2.5">
+                            <a href="https://www.rail.co.il/" target="_blank" class="inline-flex items-center gap-1 text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 py-1.5 px-3 rounded-lg border border-slate-200 transition-all">
                                 🔗 לוח זמנים מעודכן ברכבת ישראל
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Event: Arrival at Ben Gurion -->
                 <div class="relative">
-                    <span class="absolute -right-[31px] top-2 bg-white border-4 border-teal-600 rounded-full w-5 h-5"></span>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <span class="text-xs font-bold text-teal-700 block mb-1">יום שלישי | 4 באוגוסט | 15:00</span>
-                        <h3 class="text-xl font-bold text-slate-900">🎒 הגעה לנתב"ג והתארגנות</h3>
-                        <p class="text-base text-slate-600 mt-1.5 leading-relaxed">הגעה לתחנת נתב"ג (טרמינל 3) כ-3 שעות ו-20 דקות לפני הטיסה. מתחילים את הליך ביטחון, מסירת מזוודות וטרולים.</p>
+                    <span class="absolute -right-[27px] top-1.5 bg-white border-4 border-teal-600 rounded-full w-4 h-4"></span>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                        <span class="text-xs font-bold text-teal-700 block mb-0.5">יום שלישי | 4 באוגוסט | 15:00</span>
+                        <h3 class="text-lg font-bold text-slate-900">🎒 הגעה לנתב"ג והתארגנות</h3>
+                        <p class="text-sm md:text-base text-slate-600 mt-1 leading-relaxed">הגעה לתחנת נתב"ג (טרמינל 3) כ-3 שעות ו-20 דקות לפני הטיסה. מתחילים את הליך ביטחון, מסירת מזוודות וטרולים.</p>
                     </div>
                 </div>
 
-                <!-- Event: Flight Out -->
                 <div class="relative">
-                    <span class="absolute -right-[31px] top-2 bg-white border-4 border-emerald-600 rounded-full w-5 h-5"></span>
-                    <div class="bg-gradient-to-l from-emerald-50 to-white p-5 rounded-2xl border border-emerald-100 shadow-sm">
-                        <span class="text-xs font-bold text-emerald-800 block mb-1">יום שלישי | 4 באוגוסט | 18:20</span>
-                        <h3 class="text-xl font-bold text-emerald-900">✈️ טיסת הלוך לבורגס (BZ 564)</h3>
-                        <p class="text-base text-slate-600 mt-1.5 leading-relaxed">טיסה ישירה המופעלת על ידי חברת <strong>SkyGini</strong>. ודאו שוב שדרכוני כל 5 בני המשפחה נמצאים איתכם בתיק היד.</p>
-                        <div class="mt-3.5 space-y-1.5 text-sm text-slate-700 bg-white p-3 rounded-xl border border-emerald-100 shadow-xs">
-                            <div>• <strong>המראה:</strong> 18:20 (נתב"ג TLV)</div>
-                            <div>• <strong>נחיתה משוערת:</strong> 20:40 (שדה תעופה בורגס BOJ)</div>
+                    <span class="absolute -right-[27px] top-1.5 bg-white border-4 border-emerald-600 rounded-full w-4 h-4"></span>
+                    <div class="bg-gradient-to-l from-emerald-50 to-white p-4 rounded-xl border border-emerald-100 shadow-2xs">
+                        <span class="text-xs font-bold text-emerald-800 block mb-0.5">יום שלישי | 4 באוגוסט | 18:20</span>
+                        <h3 class="text-lg font-bold text-emerald-900">✈️ טיסת הלוך לבורגס (BZ 564)</h3>
+                        <p class="text-sm md:text-base text-slate-600 mt-1 leading-relaxed">טיסה ישירה המופעלת על ידי חברת <strong>SkyGini</strong>. ודאו שוב שדרכוני כל 5 בני המשפחה נמצאים איתכם בתיק היד.</p>
+                        <div class="mt-2.5 space-y-1 text-xs md:text-sm text-slate-700 bg-white p-2.5 rounded-lg border border-emerald-100 shadow-3xs">
+                            <div>• <strong>המראה:</strong> 18:20 (נתב"ג TLV) | <strong>נחיתה:</strong> 20:40 (בורגס BOJ)</div>
                             <div>• <strong>צ'ק-אין:</strong> מומלץ לוודא שנכנסתם לאתר הספק 24 שעות קודם לביצוע צ'ק-אין אונליין.</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Event: Taxi Transfer -->
                 <div class="relative">
-                    <span class="absolute -right-[31px] top-2 bg-white border-4 border-teal-600 rounded-full w-5 h-5"></span>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <span class="text-xs font-bold text-teal-700 block mb-1">יום שלישי | 4 באוגוסט | 20:40</span>
-                        <h3 class="text-xl font-bold text-slate-900">🚕 איסוף והסעה למלון</h3>
-                        <p class="text-base text-slate-600 mt-1.5 leading-relaxed">נהג מטעם Booking.com/Transferz ימתין לכם בשדה התעופה בבורגס. ההסעה מסונכרנת עם מספר הטיסה והיא ללא עלות נוספת.</p>
-                        <div class="mt-3.5 text-sm text-slate-700 space-y-1.5 bg-slate-50 p-3 rounded-xl border border-slate-200">
-                            <div>• <strong>מספר הזמנת נסיעה:</strong> 926372895</div>
-                            <div>• <strong>סוג הרכב:</strong> People Carrier (מתאים ל-5 נוסעים)</div>
+                    <span class="absolute -right-[27px] top-1.5 bg-white border-4 border-teal-600 rounded-full w-4 h-4"></span>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                        <span class="text-xs font-bold text-teal-700 block mb-0.5">יום שלישי | 4 באוגוסט | 20:40</span>
+                        <h3 class="text-lg font-bold text-slate-900">🚕 איסוף והסעה למלון</h3>
+                        <p class="text-sm md:text-base text-slate-600 mt-1 leading-relaxed">נהג מטעם Booking.com/Transferz ימתין לכם בשדה התעופה בבורגס. ההסעה מסונכרנת עם מספר הטיסה והיא ללא עלות נוספת.</p>
+                        <div class="mt-2.5 text-xs md:text-sm text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                            <div>• <strong>הזמנה:</strong> 926372895 | <strong>רכב:</strong> People Carrier (ל-5 נוסעים)</div>
                             <div>• <strong>מזהה נסיעה (Ride ID):</strong> 611822401</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Event: Hotel Check-In with Google Maps Link -->
                 <div class="relative">
-                    <span class="absolute -right-[31px] top-2 bg-white border-4 border-teal-600 rounded-full w-5 h-5"></span>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <span class="text-xs font-bold text-teal-700 block mb-1">יום שלישי | 4 באוגוסט | הגעה למלון</span>
-                        <h3 class="text-xl font-bold text-slate-900">🏨 צ'ק-אין ב-Hotel Central</h3>
-                        <p class="text-base text-slate-600 mt-1.5 leading-relaxed">הגעה למלון בסאני ביץ' וקבלת מפתחות ל-2 החדרים (כולל ארוחת בוקר). שעות הצ'ק-אין הרשמיות הן עד חצות.</p>
-                        <div class="mt-3.5 text-sm text-slate-700 space-y-1.5 bg-slate-50 p-3 rounded-xl border border-slate-200">
-                            <div>• <strong>מלון:</strong> Hotel Central, Sunny Beach</div>
-                            <div>• <strong>מספר הזמנה בבוקינג:</strong> 5468028350</div>
-                            <div>• <strong>קוד סודי:</strong> 9658</div>
-                            <div>• <strong>טלפון המלון:</strong> <a href="tel:+35955426933" class="text-teal-600 font-bold underline">+359 554 26933</a></div>
-                            <div class="pt-2.5 border-t border-slate-200 mt-2">
-                                <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Central+Sunny+Beach+Bulgaria" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-700 py-2 px-4 rounded-xl border border-teal-200 transition-all shadow-xs">
-                                    📍 ניווט ל-Hotel Central ב-Google Maps
-                                </a>
+                    <span class="absolute -right-[27px] top-1.5 bg-white border-4 border-teal-600 rounded-full w-4 h-4"></span>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                        <div class="flex justify-between items-start gap-2">
+                            <div>
+                                <span class="text-xs font-bold text-teal-700 block mb-0.5">יום שלישי | 4 באוגוסט | הגעה</span>
+                                <h3 class="text-lg font-bold text-slate-900">🏨 צ'ק-אין ב-Hotel Central</h3>
                             </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Central+Sunny+Beach+Bulgaria" target="_blank" class="p-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-xl transition-all shadow-3xs" title="ניווט במפה">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="text-sm md:text-base text-slate-600 mt-1 leading-relaxed">הגעה למלון בסאני ביץ' וקבלת מפתחות ל-2 החדרים (כולל ארוחת בוקר). שעות הצ'ק-אין הרשמיות הן עד חצות.</p>
+                        <div class="mt-2.5 text-xs md:text-sm text-slate-700 space-y-1 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                            <div>• <strong>מלון:</strong> Hotel Central, Sunny Beach</div>
+                            <div>• <strong>אישור הזמנה:</strong> 5468028350 | <strong>קוד סודי:</strong> 9658</div>
+                            <div>• <strong>טלפון המלון:</strong> <a href="tel:+35955426933" class="text-teal-600 font-bold underline">+359 554 26933</a></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Event: Vacation Days -->
                 <div class="relative">
-                    <span class="absolute -right-[31px] top-2 bg-white border-4 border-amber-500 rounded-full w-5 h-5"></span>
-                    <div class="bg-amber-50/50 p-5 rounded-2xl border border-amber-100 shadow-sm">
-                        <span class="text-xs font-bold text-amber-800 block mb-1">5 - 8 באוגוסט (רביעי עד שבת)</span>
-                        <h3 class="text-xl font-bold text-amber-900">🌴 ימי בטן-גב ונופש משפחתי</h3>
-                        <p class="text-base text-slate-600 mt-1.5 leading-relaxed">זמן חופשי לבילוי, ים ושופינג בסאני ביץ'. ארוחת הבוקר כלולה במלון.</p>
-                        <p class="text-sm text-slate-500 mt-2">הכנו עבורכם רשימת חופים ומסעדות מפורטת עם מיקומים בלשונית <strong>"מקומות"</strong> למעלה.</p>
+                    <span class="absolute -right-[27px] top-1.5 bg-white border-4 border-amber-500 rounded-full w-4 h-4"></span>
+                    <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-100 shadow-2xs">
+                        <span class="text-xs font-bold text-amber-800 block mb-0.5">5 - 8 באוגוסט (רביעי עד שבת)</span>
+                        <h3 class="text-lg font-bold text-amber-900">🌴 ימי בטן-גב ונופש משפחתי</h3>
+                        <p class="text-sm md:text-base text-slate-600 mt-1 leading-relaxed">זמן חופשי לבילוי, ים ושופינג בסאני ביץ'. ארוחת הבוקר כלולה במלון.</p>
+                        <p class="text-xs md:text-sm text-slate-500 font-medium mt-1.5">הכנו עבורכם רשימת חופים ומסעדות מפורטת עם מיקומים בלשונית <strong>"מקומות"</strong> למעלה.</p>
                     </div>
                 </div>
 
-                <!-- Event: Sunday Check-Out -->
                 <div class="relative">
-                    <span class="absolute -right-[31px] top-2 bg-white border-4 border-teal-600 rounded-full w-5 h-5"></span>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <span class="text-xs font-bold text-teal-700 block mb-1">יום ראשון | 9 באוגוסט | 06:30</span>
-                        <h3 class="text-xl font-bold text-slate-900">🔑 צ'ק-אאוט מוקדם מהמלון</h3>
-                        <p class="text-base text-slate-600 mt-1.5 leading-relaxed">מפנים את 2 החדרים ב-Hotel Central ויציאה לכיוון שדה התעופה בבורגס לקראת טיסת החזור.</p>
+                    <span class="absolute -right-[27px] top-1.5 bg-white border-4 border-teal-600 rounded-full w-4 h-4"></span>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                        <span class="text-xs font-bold text-teal-700 block mb-0.5">יום ראשון | 9 באוגוסט | 06:30</span>
+                        <h3 class="text-lg font-bold text-slate-900">🔑 צ'ק-אאוט מוקדם מהמלון</h3>
+                        <p class="text-sm md:text-base text-slate-600 mt-1 leading-relaxed">מפנים את 2 החדרים ב-Hotel Central ויציאה לכיוון שדה התעופה בבורגס לקראת טיסת החזור.</p>
                     </div>
                 </div>
 
-                <!-- Event: Flight Back -->
                 <div class="relative">
-                    <span class="absolute -right-[31px] top-2 bg-white border-4 border-emerald-600 rounded-full w-5 h-5"></span>
-                    <div class="bg-gradient-to-l from-emerald-50 to-white p-5 rounded-2xl border border-emerald-100 shadow-sm">
-                        <span class="text-xs font-bold text-emerald-800 block mb-1">יום ראשון | 9 באוגוסט | 10:20</span>
-                        <h3 class="text-xl font-bold text-emerald-900">✈️ טיסת חזור לישראל (BZ 565)</h3>
-                        <p class="text-base text-slate-600 mt-1.5 leading-relaxed">טיסת החזור שלכם ממריאה בבוקר. שימו לב שהטיסה מחייבת ביצוע צ'ק-אין ומסירת מזוודות ישירות בדלפקים בשדה התעופה בבורגס.</p>
-                        <div class="mt-3.5 space-y-1.5 text-sm text-slate-700 bg-white p-3 rounded-xl border border-emerald-100 shadow-xs">
-                            <div>• <strong>המראה:</strong> 10:20 (בורגס BOJ)</div>
-                            <div>• <strong>נחיתה משוערת:</strong> 12:40 (נתב"ג TLV)</div>
+                    <span class="absolute -right-[27px] top-1.5 bg-white border-4 border-emerald-600 rounded-full w-4 h-4"></span>
+                    <div class="bg-gradient-to-l from-emerald-50 to-white p-4 rounded-xl border border-emerald-100 shadow-2xs">
+                        <span class="text-xs font-bold text-emerald-800 block mb-0.5">יום ראשון | 9 באוגוסט | 10:20</span>
+                        <h3 class="text-lg font-bold text-emerald-900">✈️ טיסת חזור לישראל (BZ 565)</h3>
+                        <p class="text-sm md:text-base text-slate-600 mt-1 leading-relaxed">טיסת החזור שלכם ממריאה בבוקר. שימו לב שהטיסה מחייבת ביצוע צ'ק-אין ומסירת מזוודות ישירות בדלפקים בשדה התעופה בבורגס.</p>
+                        <div class="mt-2.5 space-y-1 text-xs md:text-sm text-slate-700 bg-white p-2.5 rounded-lg border border-emerald-100 shadow-3xs">
+                            <div>• <strong>המראה:</strong> 10:20 (בורגס BOJ) | <strong>נחיתה משוערת:</strong> 12:40 (נתב"ג TLV)</div>
                             <div>• <strong>בידוק בשדה:</strong> יש להגיע לשדה עד השעה 07:20.</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Event: Return Train -->
                 <div class="relative">
-                    <span class="absolute -right-[31px] top-2 bg-white border-4 border-teal-600 rounded-full w-5 h-5"></span>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <span class="text-xs font-bold text-teal-700 block mb-1">יום ראשון | 9 באוגוסט | 13:45 (משוער)</span>
-                        <h3 class="text-xl font-bold text-slate-900">🚆 רכבת מנתב"ג חזרה לכרמיאל</h3>
-                        <p class="text-base text-slate-600 mt-1.5 leading-relaxed">לאחר המעבר בדרכונים ואיסוף המזוודות בנתב"ג, יורדים לתחנת הרכבת בטרמינל 3 לנסיעה חזרה הביתה לכרמיאל. הגעה משוערת לכרמיאל בסביבות השעה 15:45.</p>
+                    <span class="absolute -right-[27px] top-1.5 bg-white border-4 border-teal-600 rounded-full w-4 h-4"></span>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                        <span class="text-xs font-bold text-teal-700 block mb-0.5">יום ראשון | 9 באוגוסט | 13:45 (משוער)</span>
+                        <h3 class="text-lg font-bold text-slate-900">🚆 רכבת מנתב"ג חזרה לכרמיאל</h3>
+                        <p class="text-sm md:text-base text-slate-600 mt-1 leading-relaxed">לאחר המעבר בדרכונים ואיסוף המזוודות בנתב"ג, יורדים לתחנת הרכבת בטרמינל 3 לנסיעה חזרה הביתה לכרמיאל. הגעה משוערת לכרמיאל בסביבות השעה 15:45.</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- ================= TAB: CHECKLIST ================= -->
-        <section id="content-checklist" class="hidden space-y-6">
-            <div class="flex justify-between items-center">
-                <button onclick="resetChecklist()" class="text-sm text-rose-500 hover:text-rose-600 font-bold transition-all mr-auto">
-                    🔄 אפס הכל
+        <section id="content-checklist" class="hidden space-y-4">
+            <div class="flex justify-between items-center pb-1">
+                <p class="text-xs md:text-sm text-slate-500">הסימונים נשמרים בדפדפן באופן אוטומטי.</p>
+                <button onclick="resetChecklist()" class="text-xs text-rose-500 hover:text-rose-600 font-bold transition-all">
+                    🔄 אפס רשימה
                 </button>
             </div>
-            
-            <p class="text-sm text-slate-500">הסימונים שלכם נשמרים בדפדפן באופן אוטומטי, כך שתוכלו לחזור ולראות היכן עצרתם.</p>
 
-            <div class="space-y-4">
-                <!-- Category: Documents -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                    <h3 class="text-base font-bold text-teal-700 border-b border-slate-100 pb-2.5 mb-3">📄 מסמכים חיוניים</h3>
+            <div class="space-y-3">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                    <h3 class="text-base font-bold text-teal-700 border-b border-slate-100 pb-2 mb-2.5">📄 מסמכים חיוניים</h3>
                     <div class="space-y-3">
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-doc1" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">דרכונים בתוקף (לפחות ל-6 חודשים קדימה)</span>
+                            <input type="checkbox" id="check-doc1" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">דרכונים בתוקף (לפחות ל-6 חודשים קדימה)</span>
                         </label>
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-doc2" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">ביטוח נסיעות לחו"ל לכל ה-5 (חובה להפעיל מראש)</span>
+                            <input type="checkbox" id="check-doc2" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">ביטוח נסיעות לחו"ל לכל ה-5 (חובה להפעיל מראש)</span>
                         </label>
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-doc3" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">הדפסת אישור הזמנת מלון + פרטי ההסעה</span>
+                            <input type="checkbox" id="check-doc3" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">הדפסת אישור הזמנת מלון + פרטי ההסעה</span>
                         </label>
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-doc4" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">כרטיסי טיסה מודפסים / שמורים בנייד</span>
+                            <input type="checkbox" id="check-doc4" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">כרטיסי טיסה מודפסים / שמורים בנייד</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- Category: Electronics -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                    <h3 class="text-base font-bold text-teal-700 border-b border-slate-100 pb-2.5 mb-3">🔌 אלקטרוניקה</h3>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                    <h3 class="text-base font-bold text-teal-700 border-b border-slate-100 pb-2 mb-2.5">🔌 אלקטרוניקה</h3>
                     <div class="space-y-3">
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-elec1" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">מטענים לטלפונים ומתאמים (בבולגריה השקע הוא סוג C ו-F כמו בארץ)</span>
+                            <input type="checkbox" id="check-elec1" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">מטענים לטלפונים ומתאמים (בבולגריה השקע הוא סוג C ו-F כמו בארץ)</span>
                         </label>
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-elec2" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">סוללת גיבוי ניידת (מותר לשאת רק בתיק היד בטיסה)</span>
+                            <input type="checkbox" id="check-elec2" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">סוללת גיבוי ניידת (מותר לשאת רק בתיק היד בטיסה)</span>
                         </label>
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-elec3" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">חבילת גלישה מופעלת (eSIM או דרך המפעיל בארץ)</span>
+                            <input type="checkbox" id="check-elec3" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">חבילת גלישה מופעלת (eSIM או דרך המפעיל בארץ)</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- Category: Beach & Fun -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                    <h3 class="text-base font-bold text-teal-700 border-b border-slate-100 pb-2.5 mb-3">🏖️ ביגוד ובטן-גב</h3>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                    <h3 class="text-base font-bold text-teal-700 border-b border-slate-100 pb-2 mb-2.5">🏖️ ביגוד ובטן-גב</h3>
                     <div class="space-y-3">
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-beach1" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">בגדי ים ומשקפי שמש</span>
+                            <input type="checkbox" id="check-beach1" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">בגדי ים ומשקפי שמש</span>
                         </label>
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-beach2" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">קרם הגנה לפנים ולגוף (באוגוסט חם מאוד בבורגס)</span>
+                            <input type="checkbox" id="check-beach2" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">קרם הגנה לפנים ולגוף (באוגוסט חם מאוד בבורגס)</span>
                         </label>
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-beach3" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">בגדים קלילים ליום ובגדים יפים לערב</span>
+                            <input type="checkbox" id="check-beach3" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">בגדים קלילים ליום ובגדים יפים לערב</span>
                         </label>
                         <label class="flex items-start gap-3 cursor-pointer text-base">
-                            <input type="checkbox" id="check-beach4" onchange="saveCheckState(this)" class="mt-1 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5">
-                            <span class="text-slate-700">נעלי הליכה נוחות + כפכפי ים</span>
+                            <input type="checkbox" id="check-beach4" onchange="saveCheckState(this)" class="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500 w-5 h-5 flex-shrink-0 transition-all">
+                            <span class="text-slate-700 pt-0.5">נעלי הליכה נוחות + כפכפי ים</span>
                         </label>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= TAB: PLACES ================= -->
-        <section id="content-places" class="hidden space-y-6">
-            <!-- Section: Beaches -->
-            <div class="space-y-4">
-                <h3 class="text-lg font-black text-teal-800 border-r-4 border-teal-600 pr-2">🏖️ חופים מומלצים ועלויות מיטות/שמשיות</h3>
+        <section id="content-places" class="hidden space-y-4">
+            <div class="space-y-3">
+                <h3 class="text-md font-black text-teal-800 border-r-4 border-teal-600 pr-2 uppercase tracking-wide">🏖️ חופים מומלצים ועלויות מיטות/שמשיות</h3>
                 
-                <!-- Beach 1 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <h4 class="text-lg font-bold text-slate-900">1. החוף המרכזי (Sunny Beach Central Beach)</h4>
-                    <p class="text-sm text-slate-600">רצועת החוף המרכזית והקרובה ביותר למלון. מציעה חול זהב רך, המון מסעדות, דוכנים וספורט מים שוקק.</p>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-2">
+                    <div class="flex justify-between items-center gap-2">
+                        <h4 class="text-base font-bold text-slate-900">1. החוף המרכזי (Sunny Beach Central)</h4>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Sunny+Beach+Central+Beach" target="_blank" class="p-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg transition-all shadow-3xs" title="ניווט במפה">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600">רצועת החוף המרכזית והקרובה ביותר למלון. מציעה חול זהב רך, המון מסעדות, דוכנים וספורט מים שוקק.</p>
                     <p class="text-xs font-bold text-slate-700 bg-slate-50 p-2 rounded-lg">
-                        💰 עלות ל-5 אנשים: כ-35€ עד 40€ <span class="ils-val" data-eur="38">(מחשב ₪...)</span> עבור 5 מיטות ו-2 שמשיות (כ-7€ לפריט).
+                        💰 עלות ל-5 אנשים: כ-35€ עד 40€ <span class="ils-val" data-eur="38">(כ-129 ₪)</span> עבור 5 מיטות ו-2 שמשיות (כ-7€ לפריט).
                     </p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Sunny+Beach+Central+Beach" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-700 py-2 px-3 rounded-xl border border-teal-200 transition-all">
-                        📍 פתח ב-Google Maps
-                    </a>
                 </div>
 
-                <!-- Beach 2 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <h4 class="text-lg font-bold text-slate-900">2. חוף קקאו (Cacao Beach)</h4>
-                    <p class="text-sm text-slate-600">רצועת חוף רחבה, טרנדית ומפורסמת מאוד. מציעה מוזיקת רקע מעולה, ברים מעוצבים ואווירה תוססת במיוחד.</p>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-2">
+                    <div class="flex justify-between items-center gap-2">
+                        <h4 class="text-base font-bold text-slate-900">2. חוף קקאו (Cacao Beach)</h4>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Cacao+Beach+Sunny+Beach" target="_blank" class="p-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg transition-all shadow-3xs" title="ניווט במפה">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600">רצועת חוף רחבה, טרנדית ומפורסמת מאוד. מציעה מוזיקת רקע מעולה, ברים מעוצבים ואווירה תוססת במיוחד.</p>
                     <p class="text-xs font-bold text-slate-700 bg-slate-50 p-2 rounded-lg">
-                        💰 עלות ל-5 אנשים: כ-40€ עד 50€ <span class="ils-val" data-eur="45">(מחשב ₪...)</span> עבור הסט המלא.
+                        💰 עלות ל-5 אנשים: כ-40€ עד 50€ <span class="ils-val" data-eur="45">(כ-153 ₪)</span> עבור הסט המלא.
                     </p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Cacao+Beach+Sunny+Beach" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-700 py-2 px-3 rounded-xl border border-teal-200 transition-all">
-                        📍 פתח ב-Google Maps
-                    </a>
                 </div>
 
-                <!-- Beach 3 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <h4 class="text-lg font-bold text-slate-900">3. החוף הדרומי של נסבר (Nessebar South Beach)</h4>
-                    <p class="text-sm text-slate-600">חוף יפהפה, רגוע ונקי יותר הממוקם בכניסה לעיר העתיקה נסבר. חוויה שלווה יותר המתרחקת מרעש המרכז.</p>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-2">
+                    <div class="flex justify-between items-center gap-2">
+                        <h4 class="text-base font-bold text-slate-900">3. החוף הדרומי של נסבר (Nessebar South)</h4>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Nessebar+South+Beach" target="_blank" class="p-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg transition-all shadow-3xs" title="ניווט במפה">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600">חוף יפהפה, רגוע ונקי יותר הממוקם בכניסה לעיר העתיקה נסבר. חוויה שלווה יותר המתרחקת מרעש המרכז.</p>
                     <p class="text-xs font-bold text-slate-700 bg-slate-50 p-2 rounded-lg">
-                        💰 עלות ל-5 אנשים: כ-30€ עד 35€ <span class="ils-val" data-eur="32.5">(מחשב ₪...)</span> עבור הסט המלא.
+                        💰 עלות ל-5 אנשים: כ-30€ עד 35€ <span class="ils-val" data-eur="32.5">(כ-111 ₪)</span> עבור הסט המלא.
                     </p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Nessebar+South+Beach" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-700 py-2 px-3 rounded-xl border border-teal-200 transition-all">
-                        📍 פתח ב-Google Maps
-                    </a>
                 </div>
             </div>
 
-            <!-- Section: Restaurants -->
-            <div class="space-y-4 pt-4">
-                <h3 class="text-lg font-black text-teal-800 border-r-4 border-teal-600 pr-2">🍽️ מסעדות מומלצות וארוחות</h3>
-                <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-100 text-xs text-amber-900 space-y-1.5">
+            <div class="space-y-3 pt-2">
+                <h3 class="text-md font-black text-teal-800 border-r-4 border-teal-600 pr-2 uppercase tracking-wide">🍽️ מסעדות מומלצות וארוחות</h3>
+                <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100 text-xs text-amber-900 space-y-1">
                     <p class="font-bold">💡 עלויות אוכל מוערכות ל-5 אנשים:</p>
-                    <p>• <strong>ארוחת צהריים (לכל ה-5):</strong> 30€ עד 38€ <span class="ils-val" data-eur="34">(מחשב ₪...)</span> - בתי קפה קלים, פיצות או אוכל רחוב.</p>
-                    <p>• <strong>ארוחת ערב (לכל ה-5):</strong> 75€ עד 100€ <span class="ils-val" data-eur="87.5">(מחשב ₪...)</span> - ארוחה מלאה במסעדה בשרית או דגים מעולה כולל שתייה.</p>
+                    <p>• <strong>ארוחת צהריים (לכל ה-5):</strong> 30€ עד 38€ <span class="ils-val" data-eur="34">(כ-116 ₪)</span> - בתי קפה קלים, פיצות או אוכל רחוב.</p>
+                    <p>• <strong>ארוחת ערב (לכל ה-5):</strong> 75€ עד 100€ <span class="ils-val" data-eur="87.5">(כ-298 ₪)</span> - ארוחה מלאה במסעדה בשרית/דגים מעולה כולל שתייה.</p>
                 </div>
 
-                <!-- Restaurant 1 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <h4 class="text-lg font-bold text-slate-900">🍴 מסעדת ג'אני (Djanny Restaurant)</h4>
-                    <p class="text-sm text-slate-600">המסעדה המפורסמת והאהובה ביותר בסאני ביץ'. מציעה תפריט ענק המשלב בשרים, סלטים, קינוחים ופירות ים במחירים מעולים ובאיכות מצוינת. מומלץ מאוד להגיע מוקדם כדי להימנע מתור בערב.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Djanny+Restaurant+Sunny+Beach" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-700 py-2 px-3 rounded-xl border border-teal-200 transition-all">
-                        📍 פתח ב-Google Maps
-                    </a>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-2">
+                    <div class="flex justify-between items-center gap-2">
+                        <h4 class="text-base font-bold text-slate-900">🍴 מסעדת ג'אני (Djanny Restaurant)</h4>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Djanny+Restaurant+Sunny+Beach" target="_blank" class="p-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg transition-all shadow-3xs" title="ניווט במפה">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600">המסעדה המפורסמת ביותר בסאני ביץ'. תפריט ענק (בשרים, סלטים, קינוחים) במחירים מעולים ובאיכות מצוינת. כדאי להגיע מוקדם כדי למנוע המתנה בתור.</p>
                 </div>
 
-                <!-- Restaurant 2 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <h4 class="text-lg font-bold text-slate-900">🍴 מסעדת גלוריה מאר נסבר (Gloria Mar)</h4>
-                    <p class="text-sm text-slate-600">מסעדת דגים ופירות ים יוקרתית הממוקמת בנסבר העתיקה, ממש על שפת המים עם נוף שקיעה מדהים. מתאימה מאוד לארוחת ערב חגיגית.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Gloria+Mar+Restaurant+Nessebar" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-700 py-2 px-3 rounded-xl border border-teal-200 transition-all">
-                        📍 פתח ב-Google Maps
-                    </a>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-2">
+                    <div class="flex justify-between items-center gap-2">
+                        <h4 class="text-base font-bold text-slate-900">🍴 מסעדת גלוריה מאר נסבר (Gloria Mar)</h4>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Gloria+Mar+Restaurant+Nessebar" target="_blank" class="p-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg transition-all shadow-3xs" title="ניווט במפה">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600">מסעדת דגים ופירות ים יוקרתית הממוקמת בנסבר העתיקה, ממש על שפת המים עם נוף שקיעה מדהים. מתאימה מאוד לארוחת ערב חגיגית.</p>
                 </div>
             </div>
 
-            <!-- Section: Attractions -->
-            <div class="space-y-4 pt-4">
-                <h3 class="text-lg font-black text-teal-800 border-r-4 border-teal-600 pr-2">🏰 אטרקציות מובילות בסביבה</h3>
+            <div class="space-y-3 pt-2">
+                <h3 class="text-md font-black text-teal-800 border-r-4 border-teal-600 pr-2 uppercase tracking-wide">🏰 אטרקציות מובילות בסביבה</h3>
 
-                <!-- Attraction 1 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <h4 class="text-lg font-bold text-slate-900">🏰 העיר העתיקה נסבר (Nessebar Old Town)</h4>
-                    <p class="text-sm text-slate-600">עיירת חצי-אי עתיקה ומדהימה המוכרזת כאתר מורשת עולמי של אונסק"ו. מלאה בסמטאות אבן ציוריות, כנסיות עתיקות, דוכני שוק ומסעדות מול השקיעה. מומלץ מאוד לביקור של חצי יום/ערב.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Nessebar+Old+Town" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-700 py-2 px-3 rounded-xl border border-teal-200 transition-all">
-                        📍 פתח ב-Google Maps
-                    </a>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-2">
+                    <div class="flex justify-between items-center gap-2">
+                        <h4 class="text-base font-bold text-slate-900">🏰 העיר העתיקה נסבר (Nessebar Old Town)</h4>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Nessebar+Old+Town" target="_blank" class="p-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg transition-all shadow-3xs" title="ניווט במפה">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600">עיירת חצי-אי עתיקה ומדהימה (מורשת אונסק"ו). מלאה בסמטאות אבן, כנסיות עתיקות, דוכני שוק ומסעדות מול הים. מומלץ מאוד לביקור של ערב.</p>
                 </div>
 
-                <!-- Attraction 2 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <h4 class="text-lg font-bold text-slate-900">🌊 פארק המים אקשן (Action Aquapark)</h4>
-                    <p class="text-sm text-slate-600">פארק מים ענק וחווייתי בסאני ביץ' עם מגלשות אקסטרים, נהרות אבובים ובריכות גלים. פתרון מושלם ליום שלם של כיף משפחתי מלא אדרנלין.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Action+Aquapark+Sunny+Beach" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-700 py-2 px-3 rounded-xl border border-teal-200 transition-all">
-                        📍 פתח ב-Google Maps
-                    </a>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-2">
+                    <div class="flex justify-between items-center gap-2">
+                        <h4 class="text-base font-bold text-slate-900">🌊 פארק המים אקשן (Action Aquapark)</h4>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Action+Aquapark+Sunny+Beach" target="_blank" class="p-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg transition-all shadow-3xs" title="ניווט במפה">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600">פארק מים ענק וחווייתי בסאני ביץ' עם מגלשות אקסטרים, נהרות אבובים ובריכות גלים. מושלם ליום שלם של כיף משפחתי.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ================= TAB: TOOLS ================= -->
-        <section id="content-tools" class="hidden space-y-6">
-            <!-- Dynamic Live Euro Conversion Card -->
-            <div class="bg-gradient-to-r from-teal-50 to-teal-100/30 p-6 rounded-2xl border border-teal-100 shadow-md">
-                <!-- Currency Converter App -->
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1.5">יורו (EUR)</label>
-                            <input type="number" id="input-bgn" oninput="calcCurrency('bgn')" value="10" class="w-full bg-slate-50 border border-slate-300 rounded-lg py-2 px-3 text-base font-bold text-teal-700 focus:outline-none focus:border-teal-500">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1.5">שקלים חדשים (ILS)</label>
-                            <input type="number" id="input-ils" oninput="calcCurrency('ils')" class="w-full bg-slate-50 border border-slate-300 rounded-lg py-2 px-3 text-base font-bold text-slate-700 focus:outline-none focus:border-teal-500">
-                        </div>
+        <section id="content-tools" class="hidden space-y-4">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">יורו (EUR)</label>
+                        <input type="number" id="input-bgn" oninput="calcCurrency('bgn')" value="1" class="w-full bg-slate-50 border border-slate-300 rounded-lg py-2 px-3 text-base font-bold text-teal-700 focus:outline-none focus:border-teal-500">
                     </div>
-                    <!-- Live Dynamic Date/Time Notice -->
-                    <p id="rate-date-notice" class="text-xs text-slate-400 text-center mt-1 font-medium">טוען שער חליפין עדכני...</p>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">שקלים חדשים (ILS)</label>
+                        <input type="number" id="input-ils" oninput="calcCurrency('ils')" class="w-full bg-slate-50 border border-slate-300 rounded-lg py-2 px-3 text-base font-bold text-slate-700 focus:outline-none focus:border-teal-500">
+                    </div>
                 </div>
+                <p id="rate-date-notice" class="text-xs text-slate-400 text-center mt-1 font-medium">טוען שער חליפין עדכני...</p>
             </div>
 
-            <!-- Useful Quick Tips -->
-            <div class="space-y-4">
+            <div class="space-y-3">
                 <h3 class="text-lg font-bold text-slate-900">💡 דברים שחשוב לדעת:</h3>
                 
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-sm space-y-2.5">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs text-sm space-y-2">
                     <p class="font-bold text-teal-700 text-base">💴 כספומטים ומזומן:</p>
-                    <p class="text-slate-600 text-sm leading-relaxed">
+                    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
                         בסאני ביץ' ישנם כספומטים "פרטיים" רבים (כגון Euronet). מומלץ מאוד להימנע מהם עקב עמלות המרה ושערים גבוהים במיוחד. מומלץ למשוך כסף רק בכספומט שנמצא פיזית בתוך סניף של בנק מקומי מוכר (כמו DSK, UBB).
                     </p>
                 </div>
 
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-sm space-y-2.5">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs text-sm space-y-2">
                     <p class="font-bold text-teal-700 text-base">🏠 טיפים להתנהלות קבוצתית:</p>
-                    <p class="text-slate-600 text-sm leading-relaxed">
+                    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
                         במסעדות ובברים רצוי להחזיק מעט כסף מזומן לטיפים (כ-10% מהחשבון נהוגים בבולגריה במידה והשירות היה טוב). בנוסף, מומלץ שכל אחד מהחמישה יוריד אפליקציית התנהלות כספית משותפת (כמו Splitwise) כדי לעקוב בקלות אחר ההוצאות המשותפות של הטיול.
                     </p>
                 </div>
@@ -421,39 +416,43 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white py-6 border-t border-slate-200 text-center px-4 mt-auto">
-        <p class="text-sm font-bold text-slate-500">בורגס 2026 • חופשה משפחתית ✈️</p>
+    <footer class="bg-white py-5 border-t border-slate-200 text-center px-4 mt-auto">
+        <p class="text-xs font-bold text-slate-400">בורגס 2026 • חופשה משפחתית ✈️</p>
     </footer>
 
-    <!-- Interactive JS Logic -->
     <script>
-        // Default backup rate just in case (1 EUR = 3.40 ILS)
+        // Default backup live rate (1 EUR = 3.40 ILS)
         let liveEuroToIlsRate = 3.4012; 
+        const tabsOrder = ['timeline', 'checklist', 'places', 'tools'];
+        let currentTabIdx = 0;
 
         // Fetch Live Exchange Rate from Free API on load
         async function fetchLiveRate() {
             try {
-                const response = await fetch('https://open.er-api.com/v6/latest/EUR');
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 4000); 
+
+                const response = await fetch('https://open.er-api.com/v6/latest/EUR', { signal: controller.signal });
+                clearTimeout(timeoutId);
+
                 const data = await response.json();
                 if (data && data.rates && data.rates.ILS) {
                     liveEuroToIlsRate = data.rates.ILS;
                     
-                    // Format update time
                     const now = new Date();
                     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
                     const formattedDate = now.toLocaleDateString('he-IL', options);
                     
                     document.getElementById("rate-date-notice").innerText = "מועד נכונות השער החי: " + formattedDate;
-                    
-                    // Update Inline Translations across the DOM
-                    updateInlineTranslations();
-                    // Update input box initial view
-                    calcCurrency('bgn');
+                } else {
+                    throw new Error("Invalid API");
                 }
             } catch (error) {
-                console.error("Failed to load live exchange rate:", error);
-                document.getElementById("rate-date-notice").innerText = "מועד נכונות השער (גיבוי): 29 ביוני 2026";
+                console.warn("Using offline safe rate due to connection/CORS limits.");
+                const now = new Date();
+                const backupOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+                document.getElementById("rate-date-notice").innerText = "מועד נכונות השער (גיבוי): " + now.toLocaleDateString('he-IL', backupOptions);
+            } finally {
                 updateInlineTranslations();
                 calcCurrency('bgn');
             }
@@ -489,15 +488,15 @@
 
             document.getElementById("days").innerText = String(days).padStart(2, '0');
             document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
         }
 
-        // Run countdown every second
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
         // Switch Tabs logic
         function switchTab(tabName) {
+            currentTabIdx = tabsOrder.indexOf(tabName);
+
             document.getElementById("content-timeline").classList.add("hidden");
             document.getElementById("content-checklist").classList.add("hidden");
             document.getElementById("content-places").classList.add("hidden");
@@ -505,8 +504,7 @@
 
             document.getElementById("content-" + tabName).classList.remove("hidden");
 
-            const tabs = ['timeline', 'checklist', 'places', 'tools'];
-            tabs.forEach(t => {
+            tabsOrder.forEach(t => {
                 const tabEl = document.getElementById("tab-" + t);
                 tabEl.classList.remove("bg-teal-600", "text-white", "shadow-sm");
                 tabEl.classList.add("text-slate-500");
@@ -515,6 +513,45 @@
             const activeTab = document.getElementById("tab-" + tabName);
             activeTab.classList.remove("text-slate-500");
             activeTab.classList.add("bg-teal-600", "text-white", "shadow-sm");
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // SWIPE DETECTION SYSTEM FOR MOBILE (CORRECTED DIRECTION FOR RTL)
+        let touchstartX = 0;
+        let touchendX = 0;
+        let touchstartY = 0;
+        let touchendY = 0;
+        
+        window.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+            touchstartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        window.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            touchendY = e.changedTouches[0].screenY;
+            handleGesture();
+        }, { passive: true });
+
+        function handleGesture() {
+            const diffX = touchendX - touchstartX;
+            const diffY = touchendY - touchstartY;
+            
+            // Check if horizontal movement is greater than vertical (prevents swipe while scrolling down)
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    // Swiped Right -> Go to NEXT tab in RTL (forward in timeline)
+                    if (currentTabIdx < tabsOrder.length - 1) {
+                        switchTab(tabsOrder[currentTabIdx + 1]);
+                    }
+                } else {
+                    // Swiped Left -> Go to PREVIOUS tab in RTL (backward in timeline)
+                    if (currentTabIdx > 0) {
+                        switchTab(tabsOrder[currentTabIdx - 1]);
+                    }
+                }
+            }
         }
 
         // Checklist persistence in LocalStorage
@@ -532,6 +569,7 @@
             });
         }
 
+        // Reset all checked items
         function resetChecklist() {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(cb => {
@@ -556,7 +594,6 @@
             }
         }
 
-        // Initialize view states and call live rate fetch
         window.onload = function() {
             loadChecklistStates();
             fetchLiveRate();
